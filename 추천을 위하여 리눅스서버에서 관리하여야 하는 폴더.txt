@@ -16,3 +16,6 @@ lines terminated by '\r\n'"
 
 /var/lib/mysql-files/recommend.csv
 추천 알고리즘에서 사용하기 위해 csv로 변환한 파일
+
+
+추가로 war파일이 들어가있는 디렉토리 /usr/local/apache-tomcat-8.5.47/webapps
