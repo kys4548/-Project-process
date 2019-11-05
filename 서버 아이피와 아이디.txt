@@ -3,7 +3,7 @@
 
 리눅스 서버
 ID    	  : root
-password  : dudtlf
+password  : dudtlfwldnjs
 
 데이터 베이스 
 ID	  : root
