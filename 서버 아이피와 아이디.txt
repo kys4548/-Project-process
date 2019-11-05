@@ -1,0 +1,10 @@
+공인 IP : 106.10.54.70 (웹 접속)
+리눅스 서버 접속용 공인 IP : 106.10.34.49
+
+리눅스 서버
+ID    	  : root
+password  : dudtlf
+
+데이터 베이스 
+ID	  : root
+password  : 1234

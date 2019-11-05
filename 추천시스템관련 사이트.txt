@@ -1,3 +1,0 @@
-http://develop.sunshiny.co.kr/1016
-https://jdm.kr/blog/127
-https://mahout.apache.org/users/recommender/userbased-5-minutes.html
