@@ -1,0 +1,13 @@
+insert into account(id, email, password, role, name, age, gender, description) values (SEQ_ACCOUNT.NEXTVAL, 'kok202@mail.com', '123456', 'Performer', 'kwg', 26, 'MALE', 'Hello');
+
+insert into instrument(id, name) values(SEQ_INSTRUMENT.NEXTVAL, 'piano');
+insert into instrument(id, name) values(SEQ_INSTRUMENT.NEXTVAL, 'guitar');
+
+insert into account_instrument(id, account_id, instrument_id) values (SEQ_ACCOUNT_INSTRUMENT.NEXTVAL, 1, 1);
+insert into account_instrument(id, account_id, instrument_id) values (SEQ_ACCOUNT_INSTRUMENT.NEXTVAL, 1, 2);
+
+insert into tag(id, content) values(SEQ_TAG.NEXTVAL, 'classic');
+insert into tag(id, content) values(SEQ_TAG.NEXTVAL, 'band music');
+
+insert into account_tag(id, account_id, tag_id) values (SEQ_ACCOUNT_TAG.NEXTVAL, 1, 1);
+insert into account_tag(id, account_id, tag_id) values (SEQ_ACCOUNT_TAG.NEXTVAL, 1, 2);

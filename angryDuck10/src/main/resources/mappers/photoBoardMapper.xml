@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="photoBoard">
+<sql id="paging_header">
+		select *
+		from (
+			select rownum as rn, A.*
+			from(
+	</sql>
+	<sql id="paging_footer">
+			) A
+		)
+		where rn between #{start} and #{end}
+	</sql>
+
+	<select id="listAll" resultType="com.ceramicduck.angryduck.model.dto.PhotoBoardDTO">
+		<include refid="paging_header" />
+		select rownum,c.id,title,timestamp,viewcnt,name
+		from concert c, account a
+		<!-- 이 부분에 where절이 삽입됨 -->
+		<include refid="search" />
+		order by c.timestamp desc
+		<include refid="paging_footer"/>
+	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test="search_option == 'all'">
+				where c.writer_id = a.id 
+				and
+				( name like '%'||#{keyword}||'%' 
+				or content like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%' )
+			</when>
+			<otherwise>
+				where c.writer_id = a.id
+				and ${search_option} like '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="countArticle" resultType="int">
+		select count(*) 
+		from concert c, account a
+		<include refid="search" />
+	</select>
+	
+	<insert id="insert">
+		insert into concert (id,writer_id,title,content) values
+		(SEQ_CONCERT.nextval, #{writer_id}, #{title}, #{content})
+	</insert>
+	
+	<select id="getView" resultType="com.ceramicduck.angryduck.model.dto.PhotoBoardDTO">
+		select c.id, name, title, content, timestamp, viewcnt
+		from concert c, account a 
+		where c.writer_id = a.id and c.id = #{id}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

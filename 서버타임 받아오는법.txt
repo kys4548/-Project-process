@@ -1,0 +1,21 @@
+서버 시간 받는법
+System.currentTimeMillis() 1970 년 이후 밀리 초 수를 반환합니다.
+
+
+날짜를 특정 방식으로 포맷하려면 먼저 Date()객체를 만든 다음 다음을 사용하여 포맷하십시오.SimpleDateFormat
+
+Date d1 = new Date();
+SimpleDateFormat df = new SimpleDateFormat("MM/dd/YYYY HH:mm a");
+String formattedDate = df.format(d1);
+
+
+
+Date date = new Date(); 
+DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale); 
+String formattedDate = dateFormat.format(date);
+
+
+ 
+model.addAttribute("serverTime", formattedDate );
+
+// 서버타임을 전달하거나 세션에 저장

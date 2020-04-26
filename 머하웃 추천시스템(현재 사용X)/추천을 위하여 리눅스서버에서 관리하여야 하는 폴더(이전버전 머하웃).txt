@@ -1,0 +1,18 @@
+crontab  : 사용자가 주기적으로  실행할 스크립트가 들어있는곳 
+-e(수정), -l(실행되는 목록 보기)
+
+
+
+/root/script/project_recommend.sh : crontab에 의하여 주기적으로 실행되는 스크립트(5분 마다)
+코드 내용
+rm -f /var/lib/mysql-files/recommend.csv
+mysql -uroot -p1234 spring_db -e 
+"select account_id, concert_id, preference 
+from concert_performer 
+into outfile '/var/lib/mysql-files/recommend.csv' 
+fields enclosed by '' 
+terminated by ',' 
+lines terminated by '\r\n'"
+
+/var/lib/mysql-files/recommend.csv
+추천 알고리즘에서 사용하기 위해 csv로 변환한 파일
