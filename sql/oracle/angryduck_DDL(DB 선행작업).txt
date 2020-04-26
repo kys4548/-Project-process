@@ -1,0 +1,47 @@
+
+create table community_comment(
+    id number not null primary key,
+    writer_id number not null,
+    community_id number not null,
+    content varchar2(200),
+    timestamp date default sysdate, /* 2019.09.30 º¯°æ »çÇ×*/
+    constraint CMNT_CMT_FK_ACCOUNT_ID FOREIGN KEY(writer_id) REFERENCES account(id),
+    constraint CMNT_CMT_FK_COMMUNITY_ID FOREIGN KEY(community_id) REFERENCES community(id)
+);
+
+/* µ¥ÀÌÅÍ º£ÀÌ½º ¼±ÇàÀÛ¾÷ */
+
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'violin');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'viola');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'cello');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'contrabass');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'bass');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'guitar');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'flute');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'oboe');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'clarinet');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'bassoon');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'saxophone');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'horn');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'trumpet');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'trombone');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'drum');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'piano');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'organ');
+insert into instrument (id, name) values (SEQ_INSTRUMENT.nextval,'keyboard');
+
+
+insert into tag (id, content) values (SEQ_TAG.nextval, 'rock');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'folk');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'rnb');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'hiphop');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'jazz');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'dance');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'indie');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'rap');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'ballads');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'techno');
+insert into tag (id, content) values (SEQ_TAG.nextval, 'newage');
+
+
+commit;

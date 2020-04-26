@@ -1,0 +1,175 @@
+/* 데이터 베이스 아이디 spring */
+/* 데이터 베이스 비밀번호 1234 */
+
+/*시퀀스 원하면 테이블 생성 시 auto_increment라는 속성을 시퀀스로 지정해줄 컬럼에 적용*/
+
+/*account*/
+create table account(
+    id int not null auto_increment primary key,
+    email varchar(200) not null unique,
+    password varchar(200) not null,
+    role varchar(200) not null,
+    name varchar(200) not null,
+    age int not null,
+    gender varchar(200) not null,
+    description varchar(200)
+);
+
+create table tag(
+     id int not null auto_increment primary key,
+     content varchar(200)
+);
+
+create table instrument(
+    id int not null auto_increment primary key,
+    name varchar(200) not null
+);
+
+create table account_instrument(
+    id int not null auto_increment primary key,
+    account_id int not null,
+    instrument_id int not null,
+    constraint ACNT_INST_FK_ACCOUNT_ID FOREIGN KEY(account_id) REFERENCES account(id),
+    constraint ACNT_INST_FK_INSTRUMENT_ID FOREIGN KEY(instrument_id) REFERENCES instrument(id),
+    constraint u_acount_instrument UNIQUE (account_id, instrument_id)
+);
+
+create table account_tag(
+    id int not null auto_increment primary key,
+    account_id int not null,
+    tag_id int not null,
+    constraint ACNT_TAG_FK_ACCOUNT_ID FOREIGN KEY(account_id) REFERENCES account(id),
+    constraint ACNT_TAG_FK_TAG_ID FOREIGN KEY(tag_id) REFERENCES tag(id),
+    constraint u_acount_tag UNIQUE (account_id, tag_id)
+);
+
+/*concert */
+create table concert(
+    id int not null auto_increment primary key,
+    writer_id int not null,
+    title varchar(200) not null,
+    content text,
+    image varchar(200),
+    region varchar(200) not null,
+    datetime varchar(200) not null,
+    timestamp datetime default current_timestamp,
+    viewcnt int default 0, 
+    constraint CCRT_FK_CONCERT_WRITER_ID FOREIGN KEY(writer_id) REFERENCES account(id)
+);
+
+create table concert_tag(
+    id int not null auto_increment primary key,
+    concert_id int not null,
+    tag_id int not null,
+    constraint CCRT_TAG_FK_CONCERT_ID FOREIGN KEY(concert_id) REFERENCES concert(id),
+    constraint CCRT_TAG_FK_TAG_ID FOREIGN KEY(tag_id) REFERENCES tag(id),
+    constraint u_concert_tag UNIQUE (concert_id, tag_id)
+);
+
+create table concert_instrument(
+    id int not null auto_increment primary key,
+    concert_id int not null,
+    instrument_id int not null,
+    constraint CCRT_INST_FK_CONCERT_ID FOREIGN KEY(concert_id) REFERENCES concert(id),
+    constraint CCRT_INST_FK_INSTRUMENT_ID FOREIGN KEY(instrument_id) REFERENCES instrument(id),
+    constraint u_concert_instrument UNIQUE (concert_id, instrument_id)
+);
+
+create table concert_performer(
+	id int not null auto_increment primary key,
+	account_id int not null,
+	concert_id int not null,
+	preference double not null,
+	constraint CCRT_PERFORMER_FK_CONCERT_ID FOREIGN KEY(concert_id) REFERENCES concert(id),
+	constraint CCRT_PERFORMER_FK_ACCOUNT_ID FOREIGN KEY(account_id) REfERENCES account(id),
+	constraint u_concert_performer UNIQUE (concert_id, account_id)
+);
+
+/* community */
+create table community(
+    id int not null auto_increment primary key,
+    writer_id int not null,
+    title varchar(200) not null,
+    content text,
+    timestamp datetime default current_timestamp, /* 2019.09.30 변경 사항*/
+    viewcnt int default 0,  /* 2019.09.30 추가 사항*/
+    constraint CMNT_FK_ACCOUNT_ID FOREIGN KEY(writer_id) REFERENCES account(id)
+);
+
+create table community_comment(
+    id int not null auto_increment primary key,
+    writer_id int not null,
+    community_id int not null,
+    content varchar(200),
+    timestamp datetime default current_timestamp, /* 2019.09.30 변경 사항*/
+    constraint CMNT_CMT_FK_ACCOUNT_ID FOREIGN KEY(writer_id) REFERENCES account(id),
+    constraint CMNT_CMT_FK_COMMUNITY_ID FOREIGN KEY(community_id) REFERENCES community(id)
+);
+
+/* 데이터 베이스 선행작업 */
+insert into instrument (name) values ('violin');
+insert into instrument (name) values ('viola');
+insert into instrument (name) values ('cello');
+insert into instrument (name) values ('contrabass');
+insert into instrument (name) values ('bass');
+insert into instrument (name) values ('guitar');
+insert into instrument (name) values ('flute');
+insert into instrument (name) values ('oboe');
+insert into instrument (name) values ('clarinet');
+insert into instrument (name) values ('bassoon');
+insert into instrument (name) values ('saxophone');
+insert into instrument (name) values ('horn');
+insert into instrument (name) values ('trumpet');
+insert into instrument (name) values ('trombone');
+insert into instrument (name) values ('drum');
+insert into instrument (name) values ('piano');
+insert into instrument (name) values ('organ');
+insert into instrument (name) values ('keyboard');
+
+insert into tag (content) values ('rock');
+insert into tag (content) values ('folk');
+insert into tag (content) values ('rnb');
+insert into tag (content) values ('hiphop');
+insert into tag (content) values ('jazz');
+insert into tag (content) values ('dance');
+insert into tag (content) values ('indie');
+insert into tag (content) values ('rap');
+insert into tag (content) values ('ballads');
+insert into tag (content) values ('techno');
+insert into tag (content) values ('newage');
+
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+/* SEQUENCE */
+create sequence SEQ_INSTRUMENT start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_TAG start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_ACCOUNT start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_ACCOUNT_INSTRUMENT start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_ACCOUNT_TAG start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_CONCERT start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_CONCERT_TAG start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_COMMUNITY start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+create sequence SEQ_COMMUNITY_COMMENT start with 1 increment by 1 NOMAXVALUE minvalue 1 nocycle;
+
+create table instrument(
+    id number not null primary key,
+    name varchar2(200) not null
+);
+
+create table tag(
+     id number not null primary key,
+     content varchar2(200)
+);
+
+/* account */
+create table account(
+    id number not null primary key,
+    email varchar2(200) not null unique,
+    password varchar2(200) not null,
+    role varchar2(200) not null unique,
+    name varchar2(200) not null,
+    age number not null,
+    gender varchar2(200) not null,
+    description varchar2(200)
+);
+
+create table account_instrument(
+    id number not null primary key,
+    account_id number not null,
+    instrument_id number not null,
+    constraint ACNT_INST_FK_ACCOUNT_ID FOREIGN KEY(account_id) REFERENCES account(id),
+    constraint ACNT_INST_FK_INSTRUMENT_ID FOREIGN KEY(instrument_id) REFERENCES instrument(id)
+);
+
+create table account_tag(
+    id number not null primary key,
+    account_id number not null,
+    tag_id number not null,
+    constraint ACNT_TAG_FK_ACCOUNT_ID FOREIGN KEY(account_id) REFERENCES account(id),
+    constraint ACNT_TAG_FK_TAG_ID FOREIGN KEY(tag_id) REFERENCES tag(id)
+);
+
+/* concert */
+create table concert(
+    id number not null primary key,
+    writer_id number not null,
+    title varchar2(200) not null,
+    content clob,
+    image varchar2(200),
+    region varchar2(200) not null,
+    datetime varchar2(200) not null,
+    timestamp number not null,
+    constraint CCRT_FK_CONCERT_WRITER_ID FOREIGN KEY(writer_id) REFERENCES account(id)
+);
+
+create table concert_tag(
+    id number not null primary key,
+    concert_id number not null,
+    tag_id number not null,
+    constraint CCRT_TAG_FK_CONCERT_ID FOREIGN KEY(concert_id) REFERENCES concert(id),
+    constraint CCRT_TAG_FK_TAG_ID FOREIGN KEY(tag_id) REFERENCES tag(id)
+);
+
+/* community */
+create table community(
+    id number not null primary key,
+    writer_id number not null,
+    title varchar2(200) not null,
+    content clob,
+    timestamp number not null,
+    constraint CMNT_FK_ACCOUNT_ID FOREIGN KEY(writer_id) REFERENCES account(id)
+);
+
+create table community_comment(
+    id number not null primary key,
+    writer_id number not null,
+    community_id number not null,
+    content varchar2(200),
+    timestamp number not null,
+    constraint CMNT_CMT_FK_ACCOUNT_ID FOREIGN KEY(writer_id) REFERENCES account(id),
+    constraint CMNT_CMT_FK_COMMUNITY_ID FOREIGN KEY(community_id) REFERENCES community(id)
+);
+
+/* Add missing unique constraint */
+ALTER TABLE account_instrument ADD CONSTRAINT u_acount_instrument UNIQUE (account_id, instrument_id);
+ALTER TABLE account_tag ADD CONSTRAINT u_acount_tag UNIQUE (account_id, tag_id);
+ALTER TABLE concert_tag ADD CONSTRAINT u_concert_tag UNIQUE (concert_id, tag_id);
+
+commit;

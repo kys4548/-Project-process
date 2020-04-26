@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="account">
+	<select id="get_id" resultType="int">
+		select id from account where email = #{email}
+	</select>
+	
+	<insert id="insert">
+		insert into account (id, email, password, role, name, age, gender, description) values 
+		(SEQ_ACCOUNT.nextval, #{email}, #{password}, #{role}, #{name}, #{age}, #{gender}, #{description})
+	</insert>
+	
+	<select id="email_double_check" resultType="String">
+		select email from account where email = #{email}
+	</select>
+	
+	<select id="instrument" resultType="int">
+		select id from instrument where content = #{inst}
+	</select>
+	<insert id="account_instrument" parameterType="hashmap">
+		insert into account_instrument (id, account_id, instrument_id) values 
+		(SEQ_ACCOUNT_INSTRUMENT.nextval, #{accountID}, #{instrumentID})
+	</insert>
+	
+	<select id="tag" resultType="int">
+		select id from tag where content = #{t}
+	</select>
+	<insert id="account_tag" parameterType="hashmap">
+		insert into account_tag (id, account_id, tag_id) values 
+		(SEQ_ACCOUNT_TAG.nextval, #{accountID}, #{tagID})
+	</insert>
+	
+	<select id="login_check" resultType="/angryDuck/src/main/java/com/ceramicduck/angryduck/model/dto/AccountDTO.java">
+		select id,name from account 
+		where email=#{email} and password=#{password}
+	</select>
+</mapper>
+
