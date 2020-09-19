@@ -45,46 +45,51 @@ public class PhotoBoardController {
 			@RequestParam("tag") String[] tag,
 			@RequestParam("instrument") String[] instrument, HttpSession session) throws IOException{
 		String filename="-";
-//		if(!dto.getFile1().isEmpty()) {
-//			filename = System.currentTimeMillis()+dto.getFile1().getOriginalFilename();
-//			//ë°°í¬ ê²½ë¡œ
-//			String path1 = "C:\\Users\\a\\Desktop\\project\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\angryDuck\\resources\\images\\";
-//			
-//			//ê°œë°œ ê²½ë¡œ
-//			String path2 = "C:\\Users\\a\\Desktop\\project\\workspace\\angryDuck\\src\\main\\webapp\\resources\\images\\";
-//			
-//			// ì´ë¯¸ì§€ë¥¼ ë°°í¬ê²½ë¡œë¡œ ì˜®ê¸°ê³  ê°œë°œ ê²½ë¡œë¡œ ë³µì‚¬í•œë‹¤.
-//			File file = new File(path1+filename);
-//			File mfile = new File(path2+filename);
-//			
-//			InputStream inStream= null;
-//			OutputStream outStream = null;
-//			try {
-//				dto.getFile1().transferTo(file);
-//				inStream = new FileInputStream(file);
-//				outStream = new FileOutputStream(mfile);
-//				
-//				byte[] buffer = new byte[1024]; 
-//			    int length;
-//			    while ((length = inStream.read(buffer)) > 0){
-//			    	 outStream.write(buffer, 0, length);
-//			    }
-//			}
-//			catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//			finally{
-//				inStream.close();
-//				outStream.close();
-//			}
-//		}
 		
-		 if(!dto.getFile1().isEmpty()) { filename =
-		 System.currentTimeMillis()+dto.getFile1().getOriginalFilename(); String path1
-		 = "/usr/local/apache-tomcat-8.5.47/webapps/ROOT/resources/images/";
+		// À©µµ¿ì ·ÎÄÃ È¯°æ°ú ¸®´ª½º ¼­¹ö È¯°æ ¼³Á¤¿¡ µû¶ó ¹Ù²ãÁÖ±â
+		
+		if(!dto.getFile1().isEmpty()) {
+			filename = System.currentTimeMillis()+dto.getFile1().getOriginalFilename();
+			//work directory
+			String path1 = "C:\\Users\\a\\Desktop\\project\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\angryDuck\\resources\\images\\";
+			
+			//deploy directory
+			String path2 = "C:\\Users\\a\\Desktop\\project\\workspace\\angryDuck\\src\\main\\webapp\\resources\\images\\";
+			
+			// unique file name setting
+			File file = new File(path1+filename);
+			File mfile = new File(path2+filename);
+			
+			InputStream inStream= null;
+			OutputStream outStream = null;
+			try {
+				dto.getFile1().transferTo(file);
+				inStream = new FileInputStream(file);
+				outStream = new FileOutputStream(mfile);
+				
+				byte[] buffer = new byte[1024]; 
+			    int length;
+			    while ((length = inStream.read(buffer)) > 0){
+			    	 outStream.write(buffer, 0, length);
+			    }
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally{
+				inStream.close();
+				outStream.close();
+			}
+		}
+		
+//		 if(!dto.getFile1().isEmpty()) { filename =
+//		 System.currentTimeMillis()+dto.getFile1().getOriginalFilename(); String path1
+//		 = "/usr/local/apache-tomcat-8.5.47/webapps/ROOT/resources/images/";
+//		 
+//		 File file = new File(path1+filename); dto.getFile1().transferTo(file); }
 		 
-		 File file = new File(path1+filename); dto.getFile1().transferTo(file); }
-		 
+		// ¿©±â±îÁö
+		
 		dto.setImage(filename);
 		int writerId = (int)session.getAttribute("id");
 		dto.setWriterId(writerId);

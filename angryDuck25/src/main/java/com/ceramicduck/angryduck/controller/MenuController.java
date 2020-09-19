@@ -58,6 +58,7 @@ public class MenuController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		System.out.println("메인페이지 get요청");
 		return "main";
 	}
 	
