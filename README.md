@@ -42,9 +42,7 @@
 
   #### 아래 이미지 클릭
 
-  <a href="https://www.youtube.com/watch?v=2JgohB1XEEE" target="_blank">![logo](./readmeImage/preview.png)</a>
-
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/2JgohB1XEEE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <a href="https://www.youtube.com/watch?v=2JgohB1XEEE" target="_blank"><image src="./readmeImage/preview.png" width = 500></a>
 
 <br/>
 
