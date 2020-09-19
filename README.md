@@ -13,6 +13,7 @@
 
   ### **haydn, Mozart, Beethoven에서 ha, mo, bee를 이어붙여 만든 이름**
 
+  <br>
   반복되는 연주회, 되풀이되는 인력난<br>
   이번에는 어디서 객원을 구하나?<br>
 
@@ -38,78 +39,102 @@
   <br><br>
 
 * ## **[ 시연 영상 ]**
+
   #### 아래 이미지 클릭
+
   <a href="https://www.youtube.com/watch?v=2JgohB1XEEE" target="_blank">![logo](./readmeImage/preview.png)</a>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/2JgohB1XEEE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br/>
 
 - ## **Use Case**
 
-  - 비회원은 프로그램을 사용하기 위해 회원 가입을 해야 한다. <br/>
-    자신의 ID, password 및 기본정보를 입력해야 한다. <br/>
-    기본정보는 사용자 유형(주최자 또는 연주자), 이름, 나이, 성별 및 이메일을 포함한다. <br>
-    회원가입을 하면 주최자 혹은 연주자로서 시스템을 사용할 수 있다.<br>
-    <image src="./readmeImage/signup.png" width=300>
+  - #### 비회원은 프로그램을 사용하기 위해 회원 가입을 해야 한다. <br/>
+
+    #### 자신의 ID, password 및 기본정보를 입력해야 한다. <br/>
+
+    #### 기본정보는 사용자 유형(주최자 또는 연주자), 이름, 나이, 성별 및 이메일을 포함한다. <br>
+
+    #### 회원가입을 하면 주최자 혹은 연주자로서 시스템을 사용할 수 있다.<br>
+
+    <image src="./readmeImage/signup.png" width=500>
     <br><br>
 
-  - 회원은 ID와password로 로그인해야 한다.<br>
-    <image src="./readmeImage/login.png" width=300>
+  - #### 회원은 ID와password로 로그인해야 한다.<br>
+
+    <image src="./readmeImage/login.png" width=500>
     <br><br>
 
-  - 회원은 로그아웃 할 수 있다.<br>
-    <image src="./readmeImage/logout.png" width=300>
+  - #### 회원은 로그아웃 할 수 있다.<br>
+
+    <image src="./readmeImage/logout.png" width=500>
     <br><br>
 
-  - 회원은 이 시스템에서 탈퇴할 수 있다.<br>
-    탈퇴와 동시에 시스템 사용 권한은 소멸한다.<br>
+  - #### 회원은 이 시스템에서 탈퇴할 수 있다.<br>
+
+    #### 탈퇴와 동시에 시스템 사용 권한은 소멸한다.<br>
+
     <br>
 
-  - 주최자 회원은 모집공고를 등록할 수 있다.<br>
-    등록할 때에는 공연정보를 입력해야 한다.<br>
-    **등록 후 1년이 지난 모집공고는 삭제된다.**<br>
-    <image src="./readmeImage/announcement.png" width=300>
+  - #### 주최자 회원은 모집공고를 등록할 수 있다.<br>
+
+    #### 등록할 때에는 공연정보를 입력해야 한다.<br>
+
+    #### **등록 후 1년이 지난 모집공고는 삭제된다.**<br>
+
+    <image src="./readmeImage/announcement.png" width=500>
     <br><br>
 
-  - 주최자 회원은 자신이 등록한 모집공고를 조회할 수 있다.<br>
-    조회 결과는 등록 날짜를 기준으로 정렬해서 보여준다.<br>
-    조회 리스트 중 하나의 모집공고를 선택하면 해당 세부정보를 출력할 수 있고 조회 리스트 내에서 모집공고를 취소, 수정할 수 있다.<br>
-    <image src="./readmeImage/picture1.png" width=300>
+  - #### 주최자 회원은 자신이 등록한 모집공고를 조회할 수 있다.<br>
+
+    #### 조회 결과는 등록 날짜를 기준으로 정렬해서 보여준다.<br>
+
+    #### 조회 리스트 중 하나의 모집공고를 선택하면 해당 세부정보를 출력할 수 있고 조회 리스트 내에서 모집공고를 취소, 수정할 수 있다.<br>
+
+    <image src="./readmeImage/picture1.png" width=500>
     <br><br>
 
-  - 연주자 회원은 악기를 선택해서 지원 가능한 모집공고를 검색할 수 있다. <br>
-    검색 결과 리스트는 등록날짜로 정렬된다. <br>
-    검색 결과 중 원하는 모집을 선택하면 상세정보를 출력할 수 있고 지원할 수도 있다.<br>
-    <image src="./readmeImage/picture2.png" width=300>
+  - #### 연주자 회원은 악기를 선택해서 지원 가능한 모집공고를 검색할 수 있다. <br>
+
+    #### 검색 결과 리스트는 등록날짜로 정렬된다. <br>
+
+    #### 검색 결과 중 원하는 모집을 선택하면 상세정보를 출력할 수 있고 지원할 수도 있다.<br>
+
+    <image src="./readmeImage/picture2.png" width=500>
     <br><br>
 
-  - 주자 회원은 자신이 지원했었던 모집공고를 검색할 수 있다.
-    <image src="./readmeImage/picture3.png" width=300>
+  - #### 주자 회원은 자신이 지원했었던 모집공고를 검색할 수 있다.<br>
+
+    <image src="./readmeImage/picture3.png" width=500>
     <br><br>
 
-  - 연주자 회원에게 적합한 모집공고를 추천해준다.<br>
-    <image src="./readmeImage/picture4.png" width=300>
+  - #### 연주자 회원에게 적합한 모집공고를 추천해준다.<br>
+    <image src="./readmeImage/picture4.png" width=500>
     <br><br>
 
 - ## 추가된 기능
 
-  ### **1. About**
+  - ### **About**
 
-  <image src="./readmeImage/about.png" width=400><br>
+    <image src="./readmeImage/about.png" width=500><br>
+    <br>
 
-  ### **2. Community And Comment**
+  - ### **Community And Comment**
 
-  <image src="./readmeImage/community.png" width=400>
-  <br><br>
-  <image src="./readmeImage/comment.png" width=400>
-  <br><br>
+    <image src="./readmeImage/community.png" width=500>
+    <br><br>
+    <image src="./readmeImage/comment.png" width=500>
+    <br><br>
 
 - ## 삭제된 기능
 
-  ### **1. Mail**
+  - ### **Mail**
 
-  <image src="./readmeImage/mail.png" width=400><br>
-  Local 환경에서는 작동하였지만 실제 Server에서 작동하지 않아 삭제
-  <br><br>
+    <image src="./readmeImage/mail.png" width=400><br>
+    Local 환경에서는 작동하였지만 실제 Server에서 작동하지 않아 삭제
+    <br><br>
 
 - ## Spring 프로젝트 구조
+  <br>
   <image src="./readmeImage/picture5.png" width=400><br>
