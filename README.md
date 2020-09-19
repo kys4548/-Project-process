@@ -135,4 +135,4 @@
 
 - ## Spring 프로젝트 구조
   <br>
-  <image src="./readmeImage/picture5.png" width=400><br>
+  <image src="./readmeImage/picture5.PNG" width=400><br>
