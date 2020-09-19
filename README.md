@@ -38,6 +38,7 @@
   <br><br>
 
 * ## **[ 시연 영상 ]**
+  #### 아래 이미지 클릭
   <a href="https://www.youtube.com/watch?v=2JgohB1XEEE" target="_blank">![logo](./readmeImage/preview.png)</a>
 
 <br/>
